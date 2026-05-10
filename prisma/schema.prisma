@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model Party {
+  id            String   @id @default(uuid())
+  name          String
+  date          DateTime
+  fee           Int
+  createdAt     DateTime @default(now())
+  guests        Guest[]
+}
+
+model Guest {
+  id                String   @id @default(uuid())
+  partyId           String
+  party             Party    @relation(fields: [partyId], references: [id], onDelete: Cascade)
+  instagramId       String
+  paymentMethod     String
+  transferReference String?
+  checkedIn         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  manuallyAdded Boolean @default(false)
+}

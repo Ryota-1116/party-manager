@@ -198,7 +198,7 @@ export default function Home() {
         />
         <input
           type="date"
-          className="w-full bg-gray-800 rounded-xl p-3 mb-3 text-white"
+          className="w-full bg-gray-800 rounded-xl p-3 mb-3 text-white appearance-none"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
